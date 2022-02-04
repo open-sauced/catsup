@@ -18,8 +18,8 @@ module.exports = (app) => {
     // send message to discord
     const webhook = process.env.DISCORD_WEBHOOK_URL;
     const params = {
-      username: "Test TestyFace",
-      avatar_url: "https://res.cloudinary.com/practicaldev/image/fetch/s--aIRKIzVN--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/330216/51029220-5eff-400f-b8a8-02660bb8c9be.png",
+      username: "Good First Issue Catsup",
+      avatar_url: "https://i5.walmartimages.com/asr/cd65cf5f-2e66-4749-9ec2-29e7b47adac8.520f35806c56e59af34a89428910a161.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       content: "New good first issue: " + context.payload.issue.html_url
     }
 
