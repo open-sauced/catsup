@@ -19,7 +19,7 @@ module.exports = (app) => {
     const webhook = process.env.DISCORD_WEBHOOK_URL;
     const params = {
       username: "Good First Issue Catsup",
-      avatar_url: "https://i5.walmartimages.com/asr/cd65cf5f-2e66-4749-9ec2-29e7b47adac8.520f35806c56e59af34a89428910a161.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+      avatar_url: "https://github.com/open-sauced/assets/blob/master/logo.png?raw=true",
       content: "New good first issue: " + context.payload.issue.html_url
     }
 
