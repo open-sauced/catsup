@@ -1,8 +1,8 @@
- service: lambda-probot-express
+ service: aws-catsup-node
 
  provider:
    name: aws
-   runtime: nodejs8.10
+   runtime: nodejs14.x
    region: us-east-1
 
  functions:
@@ -11,10 +11,10 @@
 
      environment:
        # replace values with one\'s associated to your app
-       APP_ID: ${param:APP_ID}
-       PRIVATE_KEY: ${param:PRIVATE_KEY}
-       WEBHOOK_SECRET: ${param:WEBHOOK_SECRET}
-       LOG_FORMAT: json 
+       APP_ID: ${ssm:APP_ID}
+       PRIVATE_KEY: ${ssm:PRIVATE_KEY}
+       WEBHOOK_SECRET: ${ssm:WEBHOOK_SECRET}
+       LOG_FORMAT: json
 
      events:
        - http:
