@@ -5,6 +5,9 @@ workers_dev = true
 compatibility_flags = []
 compatibility_date = "2022-02-09"
 
+[build.upload]
+format = "service-worker"
+
 [dev]
 ip = "0.0.0.0"
 port = 3000

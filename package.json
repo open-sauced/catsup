@@ -10,6 +10,7 @@
     "github",
     "probot-app"
   ],
+  "main": "./src/index.js",
   "homepage": "https://github.com/open-sauced/catsup",
   "bugs": {
     "url": "https://github.com/open-sauced/catsup/issues"
@@ -43,7 +44,8 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.0",
     "jest": "^27.5.1",
-    "smee-client": "^1.2.2"
+    "smee-client": "^1.2.2",
+    "wrangler": "^0.0.17"
   },
   "jest": {
     "testEnvironment": "node"
