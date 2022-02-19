@@ -80,11 +80,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "🚀 deploy"
-        uses: web3-storage/wrangler-action@78130c1d1e3ceb6ee3bb7613d7753431ce6bb479
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-
   cleanup:
     name: Cleanup actions
     needs:
