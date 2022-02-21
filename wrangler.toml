@@ -1,18 +1,11 @@
 name = "catsup-app"
-type = "webpack"
-account_id = ""
+compatibility_date = "2022-02-19"
 workers_dev = true
-compatibility_flags = []
-compatibility_date = "2022-02-09"
 
 [build.upload]
 format = "service-worker"
-
-[dev]
-ip = "0.0.0.0"
-port = 3000
-local_protocol="http"
-upstream_protocol="https"
+dir = "src"
+main = "index.js"
 
 [env.development.vars]
 DISCORD_URL = "https://discord.com/api/webhooks/942554263639429131/wFa0nbtOSERf40W6zt0PUgbgFFqiRiiytt2QEJXuWM48WeKtEuqO3QD9ppSg-xz6UFaj"

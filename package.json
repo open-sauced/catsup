@@ -25,7 +25,7 @@
   "scripts": {
     "push": "npx @open-sauced/conventional-commit",
     "wrangler": "npx wrangler",
-    "start": "npm run dev -- -e development",
+    "start": "npx wrangler@beta dev -l --env development --port 3000",
     "dev": "npm run wrangler -- dev",
     "build": "npm run wrangler -- build",
     "deploy": "npm run wrangler -- publish",

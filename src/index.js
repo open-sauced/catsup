@@ -1,4 +1,4 @@
-const { App } = require('@octokit/app');
+import { App } from '@octokit/app/dist-src';
 
 const GOOD_FIRST_REGEX = /^good\sfirst\sissue$/i;
 
