@@ -20,7 +20,8 @@
     "url": "git+https://github.com/open-sauced/catsup.git"
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 16.7.0",
+    "npm": ">= 8.0.0"
   },
   "scripts": {
     "push": "npx @open-sauced/conventional-commit",

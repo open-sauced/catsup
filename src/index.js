@@ -68,16 +68,15 @@ async function handleRequest(request) {
     });
   }
 
-  const id = request.headers.get('x-github-delivery');
-  const name = request.headers.get('x-github-event');
-  const payload = await request.json();
-
   try {
-    await app.webhooks.receive({
-      id,
-      name,
-      payload,
-    });
+    await app.webhooks
+      .verifyAndReceive({
+        id: request.headers.get('x-github-delivery'),
+        name: request.headers.get('x-github-event'),
+        signature: request.headers.get('x-hub-signature-256')
+          .replace(/sha256=/, ''),
+        payload: (await request.json()),
+      });
 
     return new Response('{ "ok": true }', {
       headers: { 'content-type': 'application/json' },
