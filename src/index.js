@@ -1,53 +1,12 @@
-import { App } from '@octokit/app/dist-src';
+import { setup, webhooks, verifySignature } from './octokit';
 
-const GOOD_FIRST_REGEX = /^good\sfirst\sissue$/i;
+const application = setup();
+await webhooks(application);
 
-const app = new App({
-  appId: APP_ID,
-  privateKey: APP_PK,
-  oauth: {
-    clientId: CLIENT_ID,
-    clientSecret: CLIENT_SECRET,
-  },
-  webhooks: {
-    secret: WEBHOOK_SECRET,
-  },
-});
+const dashboard = async (app) => {
+  const { data } = await app.octokit.request('GET /app');
 
-app.log.warn('Yay, the app was loaded!');
-
-app.webhooks.on('issues.labeled', async (context) => {
-  const { name } = context.payload.label;
-
-  if (!GOOD_FIRST_REGEX.test(name)) return;
-
-  // send message to discord
-  const webhook = DISCORD_URL;
-  const params = {
-    username: 'GFI-Catsup [beta]',
-    avatar_url: 'https://github.com/open-sauced/assets/blob/master/logo.png?raw=true',
-    content: `New good first issue: ${context.payload.issue.html_url}`,
-  };
-
-  // send post request using fetch to webhook
-  await fetch(webhook, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(params),
-  });
-});
-
-/**
- * Respond with hello worker text
- * @param {Request} request
- */
-async function handleRequest(request) {
-  if (request.method === 'GET') {
-    const { data } = await app.octokit.request('GET /app');
-
-    return new Response(`
+  return new Response(`
 <h1>GitHub App: ${data.name}</h1>
 
 <p>Installation count: ${data.installations_count}</p>
@@ -64,25 +23,29 @@ async function handleRequest(request) {
     <a href="https://github.com/0-vortex/open-sauced-catsup-app-test/#readme">source code</a>
 </p>
 `, {
-      headers: { 'content-type': 'text/html' },
-    });
+    headers: { 'content-type': 'text/html' },
+  });
+};
+
+/**
+ * Respond with hello worker text
+ * @param {Request} request
+ */
+async function handleRequest(request) {
+  // display installation dashboard
+  if (request.method === 'GET') {
+    return dashboard(application);
   }
 
+  // else verify webhook signature
   try {
-    await app.webhooks
-      .verifyAndReceive({
-        id: request.headers.get('x-github-delivery'),
-        name: request.headers.get('x-github-event'),
-        signature: request.headers.get('x-hub-signature-256')
-          .replace(/sha256=/, ''),
-        payload: (await request.json()),
-      });
+    await verifySignature(application, request);
 
     return new Response('{ "ok": true }', {
       headers: { 'content-type': 'application/json' },
     });
   } catch (error) {
-    app.log.error(error);
+    application.log.error(error);
 
     return new Response(`{ "error": "${error.message}" }`, {
       status: 500,
