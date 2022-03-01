@@ -85,6 +85,14 @@ Copy the "Routes" URL provided by the worker for the next part.
 
 Upon creation you should have plain-text values for `APP_ID`, `CLIENT_ID`.
 
+Add the following secrets to your Cloudflare worker like so:
+
+```
+wrangler secret put APP_ID
+```
+
+Add the remaingin variables using the same CLI command
+
 Click the "Generate a new client secret" button and copy the value of `CLIENT_SECRET`.
 
 In the webhook return URL copy the value of your worker route as described in the last step of the Cloudflare setup.
@@ -104,7 +112,8 @@ Rename this file to `private-key.pem` for the next command to work:
 openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in private-key.pem -out private-key-pkcs8.key
 ```
 
-Copy the contents of `private-key-pkcs8.key` to `APP_PK`.
+Copy the contents of `private-key-pkcs8.key` to `APP_PK`. Note the
+string will need to be on one line joined with `\n`.
 
 ### Discord
 
