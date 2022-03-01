@@ -1,4 +1,5 @@
 name = "catsup-app"
+account_id = "21fa9e6344b2449e9841137aba186b55"
 compatibility_date = "2022-02-19"
 workers_dev = true
 

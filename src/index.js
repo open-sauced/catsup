@@ -1,7 +1,7 @@
 import { setup, webhooks, verifySignature } from './octokit';
 
 const application = setup();
-await webhooks(application);
+webhooks(application);
 
 const dashboard = async (app) => {
   const { data } = await app.octokit.request('GET /app');
