@@ -81,13 +81,13 @@ Copy the "Routes" URL provided by the worker for the next part.
 
 ### GitHub App
 
-Create a new GitHub application with scopes `issues:write` and `metadata:read` while also enabling tracking events.
+[Create a new GitHub application](https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app) with scopes `issues:write` and `metadata:read` while also enabling tracking events.
 
 Upon creation you should have plain-text values for `APP_ID`, `CLIENT_ID`.
 
 Click the "Generate a new client secret" button and copy the value of `CLIENT_SECRET`.
 
-In the webhook return URL copw the value of your worker route as described in the last step of the Cloudflare setup.
+In the webhook return URL copy the value of your worker route as described in the last step of the Cloudflare setup.
 
 It is advised you generate the `WEBHOOK_SECRET` using the following command:
 
@@ -124,7 +124,7 @@ Now you can test all the variables are correct by publishing from the terminal:
 
 ```shell
 # npm run wrangler -- publish
-npm run publish
+npm run deploy
 ```
 
 Open up a production real time log using:
