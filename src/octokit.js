@@ -1,6 +1,7 @@
 import { App } from '@octokit/app/dist-src';
 
 const GOOD_FIRST_REGEX = /^good\sfirst\sissue$/i;
+const REVIEW_READY_REGEX = /^review\sto\sreview$/i;
 
 const setup = () => {
   const app = new App({
@@ -53,6 +54,31 @@ const webhooks = async (app) => {
       },
       body: JSON.stringify(params),
     });
+  });
+
+  app.webhooks.on('pull_requests.labeled', async (context) => {
+    app.log.info('Listening for issues.labeled webhooks');
+
+    app.webhooks.on('pull_requests.labeled', async (context) => {
+      const { name } = context.payload.label;
+      if (!REVIEW_READY_REGEX.test(name)) return;
+
+      // send message to discord
+      const webhook = DISCORD_URL;
+      const params = {
+        username: 'GFI-Catsup [beta]',
+        avatar_url: 'https://github.com/open-sauced/assets/blob/master/logo.png?raw=true',
+        content: `New good first issue: ${context.payload.issue.html_url}`,
+      };
+
+      // send post request using fetch to webhook
+      await fetch(webhook, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+      });
   });
 };
 
