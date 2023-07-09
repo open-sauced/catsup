@@ -9,7 +9,7 @@
       "version": "0.0.0-development",
       "license": "ISC",
       "dependencies": {
-        "octokit": "^2.1.0"
+        "@octokit/app": "^13.1.8"
       },
       "devDependencies": {
         "@open-sauced/check-engines": "^1.2.0",
@@ -2149,58 +2149,6 @@
         "@octokit/core": ">=4"
       }
     },
-    "node_modules/@octokit/plugin-rest-endpoint-methods": {
-      "version": "7.2.3",
-      "resolved": "https://registry.npmjs.org/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-7.2.3.tgz",
-      "integrity": "sha512-I5Gml6kTAkzVlN7KCtjOM+Ruwe/rQppp0QU372K1GP7kNOYEKe8Xn5BW4sE62JAHdwpq95OQK/qGNyKQMUzVgA==",
-      "dependencies": {
-        "@octokit/types": "^10.0.0"
-      },
-      "engines": {
-        "node": ">= 14"
-      },
-      "peerDependencies": {
-        "@octokit/core": ">=3"
-      }
-    },
-    "node_modules/@octokit/plugin-rest-endpoint-methods/node_modules/@octokit/types": {
-      "version": "10.0.0",
-      "resolved": "https://registry.npmjs.org/@octokit/types/-/types-10.0.0.tgz",
-      "integrity": "sha512-Vm8IddVmhCgU1fxC1eyinpwqzXPEYu0NrYzD3YZjlGjyftdLBTeqNblRC0jmJmgxbJIsQlyogVeGnrNaaMVzIg==",
-      "dependencies": {
-        "@octokit/openapi-types": "^18.0.0"
-      }
-    },
-    "node_modules/@octokit/plugin-retry": {
-      "version": "4.1.6",
-      "resolved": "https://registry.npmjs.org/@octokit/plugin-retry/-/plugin-retry-4.1.6.tgz",
-      "integrity": "sha512-obkYzIgEC75r8+9Pnfiiqy3y/x1bc3QLE5B7qvv9wi9Kj0R5tGQFC6QMBg1154WQ9lAVypuQDGyp3hNpp15gQQ==",
-      "dependencies": {
-        "@octokit/types": "^9.0.0",
-        "bottleneck": "^2.15.3"
-      },
-      "engines": {
-        "node": ">= 14"
-      },
-      "peerDependencies": {
-        "@octokit/core": ">=3"
-      }
-    },
-    "node_modules/@octokit/plugin-throttling": {
-      "version": "5.2.3",
-      "resolved": "https://registry.npmjs.org/@octokit/plugin-throttling/-/plugin-throttling-5.2.3.tgz",
-      "integrity": "sha512-C9CFg9mrf6cugneKiaI841iG8DOv6P5XXkjmiNNut+swePxQ7RWEdAZRp5rJoE1hjsIqiYcKa/ZkOQ+ujPI39Q==",
-      "dependencies": {
-        "@octokit/types": "^9.0.0",
-        "bottleneck": "^2.15.3"
-      },
-      "engines": {
-        "node": ">= 14"
-      },
-      "peerDependencies": {
-        "@octokit/core": "^4.0.0"
-      }
-    },
     "node_modules/@octokit/request": {
       "version": "6.2.8",
       "resolved": "https://registry.npmjs.org/@octokit/request/-/request-6.2.8.tgz",
@@ -3031,11 +2979,6 @@
       "version": "2.2.3",
       "resolved": "https://registry.npmjs.org/before-after-hook/-/before-after-hook-2.2.3.tgz",
       "integrity": "sha512-NzUnlZexiaH/46WDhANlyR2bXRopNg4F/zuSA3OpZnllCUgRaOF2znDioDWrmbNVsuZk6l9pMquQB38cfBZwkQ=="
-    },
-    "node_modules/bottleneck": {
-      "version": "2.19.5",
-      "resolved": "https://registry.npmjs.org/bottleneck/-/bottleneck-2.19.5.tgz",
-      "integrity": "sha512-VHiNCbI1lKdl44tGrhNfU3lup0Tj/ZBMJB5/2ZbNXRCPuRCO7ed2mgcK4r17y+KB2EfuYuRaVlwNbAeaWGSpbw=="
     },
     "node_modules/brace-expansion": {
       "version": "1.1.11",
@@ -8185,25 +8128,6 @@
       },
       "funding": {
         "url": "https://github.com/sponsors/ljharb"
-      }
-    },
-    "node_modules/octokit": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/octokit/-/octokit-2.1.0.tgz",
-      "integrity": "sha512-Pxi6uKTjBRZWgAwsw1NgHdRlL+QASCN35OYS7X79o7PtBME0CLXEroZmPtEwlWZbPTP+iDbEy2wCbSOgm0uGIQ==",
-      "dependencies": {
-        "@octokit/app": "^13.1.5",
-        "@octokit/core": "^4.2.1",
-        "@octokit/oauth-app": "^4.2.1",
-        "@octokit/plugin-paginate-rest": "^6.1.0",
-        "@octokit/plugin-rest-endpoint-methods": "^7.1.1",
-        "@octokit/plugin-retry": "^4.1.3",
-        "@octokit/plugin-throttling": "^5.2.2",
-        "@octokit/request-error": "^v3.0.3",
-        "@octokit/types": "^9.2.2"
-      },
-      "engines": {
-        "node": ">= 14"
       }
     },
     "node_modules/on-finished": {
