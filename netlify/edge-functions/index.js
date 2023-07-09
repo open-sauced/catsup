@@ -1,31 +1,31 @@
 // @ts-check
 
-import { App } from "https://esm.sh/@octokit/app@13.1.8";
+import { App } from 'https://esm.sh/@octokit/app@13.1.8';
 
-const requiredEnvironmentVariables = ["GITHUB_APP_ID", "GITHUB_APP_PRIVATE_KEY"];
+const requiredEnvironmentVariables = ['GITHUB_APP_ID', 'GITHUB_APP_PRIVATE_KEY'];
 
 const missingEnvironmentVariables = requiredEnvironmentVariables.filter(
-  (name) => !Deno.env.get(name)
+  (name) => !Deno.env.get(name),
 );
 
 if (missingEnvironmentVariables.length) {
-  throw new Error(`Missing environment variables: ${missingEnvironmentVariables.join(", ")}`);
+  throw new Error(`Missing environment variables: ${missingEnvironmentVariables.join(', ')}`);
 }
 
 const app = new App({
-  appId: Number(Deno.env.get("GITHUB_APP_ID")),
-  privateKey: Deno.env.get("GITHUB_APP_PRIVATE_KEY"),
+  appId: Number(Deno.env.get('GITHUB_APP_ID')),
+  privateKey: Deno.env.get('GITHUB_APP_PRIVATE_KEY'),
 });
 
 export const config = {
-  path: "/",
+  path: '/',
 };
 
 /**
  * @param {Request} request
  */
 export default async (request) => {
-  const { data } = await app.octokit.request("GET /app");
+  const { data } = await app.octokit.request('GET /app');
 
   return new Response(
     `
@@ -44,7 +44,7 @@ export default async (request) => {
   </p>
   `,
     {
-      headers: { "content-type": "text/html" },
-    }
+      headers: { 'content-type': 'text/html' },
+    },
   );
 };
