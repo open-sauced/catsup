@@ -5,11 +5,11 @@
   "description": "This app alerts you of good first issues.",
   "author": "Brian 'bdougie' Douglas <ilikerobot@gmail.com>",
   "license": "ISC",
+  "type": "module",
   "keywords": [
     "github",
     "github-app"
   ],
-  "main": "./src/index.js",
   "repository": "github:open-sauced/catsup",
   "engines": {
     "node": ">= 16.7.0",
