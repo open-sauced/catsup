@@ -281,3 +281,6 @@ build
 **/supabase/.env
 
 worker
+
+# Local Netlify folder
+.netlify
