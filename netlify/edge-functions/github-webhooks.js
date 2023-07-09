@@ -10,10 +10,12 @@ const requiredEnvironmentVariables = [
   'GITHUB_APP_CLIENT_ID',
   'GITHUB_APP_CLIENT_SECRET',
   'GITHUB_APP_WEBHOOK_SECRET',
-  'DISCORD_URL',
+  'DISCORD_WEBHOOKS_URL',
 ];
 
-const missingEnvironmentVariables = requiredEnvironmentVariables.filter((name) => !Deno.env.get(name));
+const missingEnvironmentVariables = requiredEnvironmentVariables.filter(
+  (name) => !Deno.env.get(name),
+);
 
 if (missingEnvironmentVariables.length) {
   throw new Error(`Missing environment variables: ${missingEnvironmentVariables.join(', ')}`);
@@ -37,7 +39,7 @@ app.webhooks.on('issues.labeled', async (context) => {
   if (!GOOD_FIRST_REGEX.test(name)) return;
 
   // send message to discord
-  const discordWebhookUrl = Deno.env.get('DISCORD_URL');
+  const discordWebhookUrl = Deno.env.get('DISCORD_WEBHOOKS_URL');
   const params = {
     username: 'GFI-Catsup [beta]',
     avatar_url: 'https://github.com/open-sauced/assets/blob/master/logo.png?raw=true',
