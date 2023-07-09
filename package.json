@@ -34,9 +34,6 @@
     "format": "npm run lint -- --fix",
     "proxy": "npx smee-client -u https://smee.io/V3PArmChAYsYzpWZ"
   },
-  "dependencies": {
-    "@octokit/app": "^12.0.5"
-  },
   "devDependencies": {
     "@open-sauced/check-engines": "^1.2.0",
     "@open-sauced/conventional-commit": "^1.0.1",
@@ -50,5 +47,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "octokit": "^2.1.0"
   }
 }
