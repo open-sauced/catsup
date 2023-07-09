@@ -39,63 +39,24 @@ In order to run the project locally we need `node>=16` and `npm>=8` installed on
 
 To install the application:
 
-```shell
-npm ci
-```
-
-Befor you can run the application we need to start the smee proxy:
-
-```shell
-npm run proxy
-```
-
-To start a local copy of the app on port `3000`:
+To start a local copy of the app on port `8888`:
 
 ```shell
 npm start
 ```
 
-The preconfigured app is of almost no use to anyone as it can only be installed by the preconfigured user and send webhooks to a dead server.
-
-It is quite possible that some of the secrets are rendered invalid as well. THey serve as placeholders and should be replaced with values provided by your testing app.
-
 ## 📦 Deploy to production
 
-### Cloudflare account
+### Netlify account
 
-Set up a cloudflare account and enable workers, change `account_id` in [wrangler.toml](./wrangler.toml) to your account id.
-
-Go to your workers dashboard and create a new worker, select any template, adjust `name` in [wrangler.toml](./wrangler.toml) if it is taken.
-
-Select the "Settings" tab on your newly created worker and click "Variables", add the following placeholders for now:
-- `APP_ID`
-- `APP_PK`
-- `DISCORD_URL`
-- `CLIENT_ID`
-- `CLIENT_SECRET`
-- `WEBHOOK_SECRET`
-
-**Note**: At the very end of this process you will have to encrypt all the values for the publish command to work.
-
-Copy the "Routes" URL provided by the worker for the next part.
+Install the Netlify GitHub app in the repository and configure the environment variables
+listed in [.env.example](.env.example).
 
 ### GitHub App
 
-[Create a new GitHub application](https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app) with scopes `issues:write` and `metadata:read` while also enabling tracking events.
+[Register a new GitHub application](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app) with the permissions `issues:write` and `metadata:read`. Set the webhook URL to `<your netlify domain>/api/github/webhooks`.
 
-Upon creation you should have plain-text values for `APP_ID`, `CLIENT_ID`.
-
-Add the following secrets to your Cloudflare worker like so:
-
-```
-wrangler secret put APP_ID
-```
-
-Add the remaingin variables using the same CLI command
-
-Click the "Generate a new client secret" button and copy the value of `CLIENT_SECRET`.
-
-In the webhook return URL copy the value of your worker route as described in the last step of the Cloudflare setup.
+Once registered, you will be able to obtain all the `GITHUB_APP_*` credentials from the app settings.
 
 It is advised you generate the `WEBHOOK_SECRET` using the following command:
 
@@ -112,12 +73,12 @@ Rename this file to `private-key.pem` for the next command to work:
 openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in private-key.pem -out private-key-pkcs8.key
 ```
 
-Copy the contents of `private-key-pkcs8.key` to `APP_PK`. Note the
+Copy the contents of `private-key-pkcs8.key` to `GITHUB_APP_ID`. Note the
 string will need to be on one line joined with `\n`.
 
 ### Discord
 
-Go to your server of choice, click "Settings" and then "Integrations", create a new webhook and copy the URL and paste that value into `DISCORD_URL`.
+Go to your server of choice, click "Settings" and then "Integrations", create a new webhook and copy the URL and paste that value into `DISCORD_WEBHOOKS_URL`.
 
 Now you are good to use the wrangler release workflows and deploy to production!
 
