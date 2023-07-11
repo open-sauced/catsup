@@ -69,11 +69,16 @@ export const config = {
  * @param {Request} request
  */
 export default async (request) => {
+  if (request.method !== "POST") {
+    app.log.warn(`Method ${request.method} not allowed`);
+    return new Response("Not found", { status: 404 });
+  }
+
   try {
     await app.webhooks.verifyAndReceive({
       id: request.headers.get("x-github-delivery"),
       name: request.headers.get("x-github-event"),
-      signature: request.headers.get("x-hub-signature-256").replace(/sha256=/, ""),
+      signature: request.headers.get("x-hub-signature-256")?.replace(/sha256=/, ""),
       payload: await request.text(),
     });
 
