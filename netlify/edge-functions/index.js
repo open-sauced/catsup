@@ -4,9 +4,7 @@ import { App } from 'https://esm.sh/@octokit/app@13.1.8';
 
 const requiredEnvironmentVariables = ['GITHUB_APP_ID', 'GITHUB_APP_PRIVATE_KEY'];
 
-const missingEnvironmentVariables = requiredEnvironmentVariables.filter(
-  (name) => !Deno.env.get(name),
-);
+const missingEnvironmentVariables = requiredEnvironmentVariables.filter((name) => !Deno.env.get(name));
 
 if (missingEnvironmentVariables.length) {
   throw new Error(`Missing environment variables: ${missingEnvironmentVariables.join(', ')}`);
@@ -21,10 +19,7 @@ export const config = {
   path: '/',
 };
 
-/**
- * @param {Request} request
- */
-export default async (request) => {
+export default async () => {
   const { data } = await app.octokit.request('GET /app');
 
   return new Response(

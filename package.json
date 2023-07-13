@@ -20,6 +20,9 @@
     "lint": "eslint --report-unused-disable-directives .",
     "format": "npm run lint -- --fix"
   },
+  "dependencies": {
+    "@octokit/app": "^14.0.0"
+  },
   "devDependencies": {
     "@netlify/functions": "^1.6.0",
     "@open-sauced/check-engines": "^1.2.0",
