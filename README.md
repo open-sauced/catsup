@@ -37,9 +37,9 @@ In order to run the project locally we need `node>=16` and `npm>=8` installed on
 
 ## 🖥️ Local development
 
-To install the application:
+To run the GitHub App code against a test repository, add `TEST_REPOSITORY` to your local `.env` file.
 
-To start a local copy of the app on port `8888`:
+To start the server locally at port `8888`:
 
 ```shell
 npm start
@@ -73,7 +73,7 @@ Rename this file to `private-key.pem` for the next command to work:
 openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in private-key.pem -out private-key-pkcs8.key
 ```
 
-Copy the contents of `private-key-pkcs8.key` to `GITHUB_APP_ID`. Note the
+Copy the contents of `private-key-pkcs8.key` to `GITHUB_APP_PRIVATE_KEY`. Note the
 string will need to be on one line joined with `\n`.
 
 ### Discord
