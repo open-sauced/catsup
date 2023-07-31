@@ -1,6 +1,6 @@
 {
   "name": "catsup",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "private": true,
   "description": "This app alerts you of good first issues.",
   "author": "Brian 'bdougie' Douglas <ilikerobot@gmail.com>",
