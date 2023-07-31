@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+### [1.0.1](https://github.com/open-sauced/catsup/compare/v1.0.0...v1.0.1) (2023-07-31)
+
+
+### 🔁 Continuous Integration
+
+* **release:** setup node with LTS ([e60bf59](https://github.com/open-sauced/catsup/commit/e60bf59296359c63ce457f33802adf9ce81a3aab))
+
 ## 1.0.0 (2023-07-31)
 
 
