@@ -5,46 +5,37 @@
   "description": "This app alerts you of good first issues.",
   "author": "Brian 'bdougie' Douglas <ilikerobot@gmail.com>",
   "license": "ISC",
+  "type": "module",
   "keywords": [
-    "probot",
     "github",
-    "probot-app"
+    "github-app"
   ],
-  "main": "./src/index.js",
-  "homepage": "https://github.com/open-sauced/catsup",
-  "bugs": {
-    "url": "https://github.com/open-sauced/catsup/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/open-sauced/catsup.git"
-  },
+  "repository": "github:open-sauced/catsup",
   "engines": {
     "node": ">= 16.7.0",
     "npm": ">= 8.0.0"
   },
   "scripts": {
-    "push": "npx @open-sauced/conventional-commit",
-    "wrangler": "npx wrangler",
-    "start": "npx wrangler@beta dev -l --env development --port 3000",
-    "dev": "npm run wrangler -- dev",
-    "build": "npm run wrangler -- build",
-    "deploy": "npm run wrangler -- publish",
+    "start": "netlify dev",
+    "dev": "node --require dotenv/config dev.js",
     "lint": "eslint --report-unused-disable-directives .",
-    "format": "npm run lint -- --fix",
-    "proxy": "npx smee-client -u https://smee.io/V3PArmChAYsYzpWZ"
+    "format": "npm run lint -- --fix"
   },
   "dependencies": {
-    "@octokit/app": "^12.0.5"
+    "@octokit/app": "^14.0.0"
   },
   "devDependencies": {
+    "@netlify/functions": "^1.6.0",
     "@open-sauced/check-engines": "^1.2.0",
     "@open-sauced/conventional-commit": "^1.0.1",
+    "dotenv": "^10.0.0",
     "eslint": "^8.8.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.0",
+    "github-app-webhook-relay": "^1.1.0",
     "jest": "^27.5.1",
+    "netlify-cli": "^15.8.1",
     "smee-client": "^1.2.2",
     "wrangler": "^0.0.17"
   },
