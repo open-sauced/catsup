@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+### [1.0.2](https://github.com/open-sauced/catsup/compare/v1.0.1...v1.0.2) (2023-07-31)
+
+
+### 🐛 Bug Fixes
+
+* remove cloudflare ([a6d4a8b](https://github.com/open-sauced/catsup/commit/a6d4a8bbb10e5c2d1db35283682ba6330edaf3ef))
+
 ### [1.0.1](https://github.com/open-sauced/catsup/compare/v1.0.0...v1.0.1) (2023-07-31)
 
 

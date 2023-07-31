@@ -1,12 +1,12 @@
 {
   "name": "catsup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "catsup",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "ISC",
       "dependencies": {
         "@octokit/app": "^14.0.0"
