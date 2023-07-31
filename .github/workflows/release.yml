@@ -20,6 +20,11 @@ jobs:
     name: Build application
     runs-on: ubuntu-latest
     steps:
+      - name: "🔧 setup node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+
       - name: "☁️ checkout repository"
         uses: actions/checkout@v3
 
