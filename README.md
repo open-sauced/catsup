@@ -82,33 +82,6 @@ Go to your server of choice, click "Settings" and then "Integrations", create a 
 
 Now you are good to use the wrangler release workflows and deploy to production!
 
-### Terminal publish
-
-Login to cloudflare with your account credentials, advised you let the browser open an OAuth dialog with:
-
-```shell
-npm run wrangler -- login
-```
-
-Now you can test all the variables are correct by publishing from the terminal:
-
-```shell
-# npm run wrangler -- publish
-npm run deploy
-```
-
-Open up a production real time log using:
-
-```shell
-npm run wrangler -- tail
-```
-
-### CI publish
-
-Create a new GitHub actions secrets named `CF_API_TOKEN`, get its value from Cloudflare's [create a new token](https://dash.cloudflare.com/profile/api-tokens) using the "Edit Cloudflare Workers" template.
-
-Push new code to the server, after a release the new code should be sent to the server and instantly propagate.
-
 ## 🤝 Contributing
 
 We encourage you to contribute to Open Sauced! Please check out the [Contributing guide](https://docs.opensauced.pizza/contributing/introduction-to-contributing/) for guidelines about how to proceed.
