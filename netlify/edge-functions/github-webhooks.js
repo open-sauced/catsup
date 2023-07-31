@@ -1,6 +1,6 @@
 // @ts-check
 
-import { App } from "https://esm.sh/@octokit/app@13.1.8";
+import { App } from "https://esm.sh/@octokit/app@14.0.0";
 import githubApp from "../../github-app.js";
 
 const requiredEnvironmentVariables = [
@@ -49,11 +49,9 @@ export default async (request) => {
   const event = {
     id: request.headers.get("x-github-delivery"),
     name: request.headers.get("x-github-event"),
-    signature: request.headers.get("x-hub-signature-256")?.replace(/sha256=/, ""),
+    signature: request.headers.get("x-hub-signature-256"),
     payload: await request.text(),
   };
-
-  console.log(event);
 
   try {
     await app.webhooks.verifyAndReceive(event);
