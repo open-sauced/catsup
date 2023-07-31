@@ -21,18 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
-        uses: actions/checkout@v2
-
-      - name: "🔧 setup node"
-        uses: actions/setup-node@v2.1.5
-        with:
-          node-version: 16
-
-      - name: "🔧 install npm@latest"
-        run: npm i -g npm@latest
-
-      - name: "📦 install dependencies"
-        uses: bahmutov/npm-install@v1
+        uses: actions/checkout@v3
 
       - name: "📊 repository visualizer"
         id: diagram
@@ -44,7 +33,7 @@ jobs:
           root_path: "src/"
 
       - name: "📊 visualiser artifacts"
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: diagram
           path: public/diagram.svg
@@ -60,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -69,7 +58,7 @@ jobs:
           rm -rf public/diagram.svg
 
       - name: "📂 download diagram artifacts"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: diagram
           path: public/
