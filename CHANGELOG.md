@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+### [1.0.3](https://github.com/open-sauced/catsup/compare/v1.0.2...v1.0.3) (2023-08-17)
+
+
+### 🐛 Bug Fixes
+
+* ignore private repositories ([#10](https://github.com/open-sauced/catsup/issues/10)) ([665fb7f](https://github.com/open-sauced/catsup/commit/665fb7f1c3c0b079d565da79251db4f84359aa2f))
+
 ### [1.0.2](https://github.com/open-sauced/catsup/compare/v1.0.1...v1.0.2) (2023-07-31)
 
 
