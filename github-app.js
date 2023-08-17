@@ -14,8 +14,11 @@ export default async function githubApp(env, app) {
   });
 
   app.webhooks.on('issues.labeled', async (context) => {
-    const { name } = context.payload.label;
+    // ignore private repositories
+    if (context.payload.repository.private) return;
 
+    // ignore if label is not "good first issue"
+    const { name } = context.payload.label;
     if (!GOOD_FIRST_REGEX.test(name)) return;
 
     // send message to discord
